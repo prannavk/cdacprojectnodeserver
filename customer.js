@@ -44,4 +44,49 @@ router.post('/register', (request, response) => {
     })
 })
 
+router.put('/update_name/:cid', (request, response) => {
+    const cid=request.params.cid;
+    const { customer_name } = request.body
+    const statement = `UPDATE customers SET customer_name=? WHERE cid=?`
+    db.pool.query(statement, [customer_name, cid], (error, result) => {
+        response.send(utils.createResult(error, result))
+    })
+})
+
+router.put('/update_email/:cid', (request, response) => {
+    const cid=request.params.cid;
+    const { customer_email } = request.body
+    const statement = `UPDATE customers SET customer_email=? WHERE cid=?`
+    db.pool.query(statement, [customer_email, cid], (error, result) => {
+        response.send(utils.createResult(error, result))
+    })
+})
+
+router.put('/update_mobile/:cid', (request, response) => {
+    const cid=request.params.cid;
+    const { customer_mobile } = request.body
+    const statement = `UPDATE customers SET customer_mobile=? WHERE cid=?`
+    db.pool.query(statement, [customer_mobile, cid], (error, result) => {
+        response.send(utils.createResult(error, result))
+    })
+})
+
+router.put('/update_password/:cid', (request, response) => {
+    const cid=request.params.cid;
+    const { customer_password } = request.body
+    const statement = `UPDATE customers SET customer_password=? WHERE cid=?`
+    db.pool.query(statement, [customer_password, cid], (error, result) => {
+        response.send(utils.createResult(error, result))
+    })
+})
+
+router.put('/update_address/:cid', (request, response) => {
+    const cid=request.params.cid;
+    const { customer_address } = request.body
+    const statement = `UPDATE customer_details SET customer_address=? WHERE cid=?`
+    db.pool.query(statement, [customer_address, cid], (error, result) => {
+        response.send(utils.createResult(error, result))
+    })
+})
+
 module.exports = router
